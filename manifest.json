@@ -1,0 +1,28 @@
+{
+  "description": "Opens Browser Tab for Goashax Twitch Channel",
+  "manifest_version": 3,
+  "name": "Goashax Opener",
+  "version": "1.0.0",
+  "background": {
+    "scripts": ["src/goashax-opener.js"]
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://decapi.me/twitch/uptime/*"
+  ],
+  "action": {
+    "default_title": "Goashax Opener",
+    "default_popup": "src/popup.html"
+  },
+  "icons": {
+    "64": "images/logo-64.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{f389b523-ebfd-433e-a181-1d3c9dbc574a}"
+    }
+  }
+}

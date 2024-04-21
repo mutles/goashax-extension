@@ -1,0 +1,28 @@
+:root {
+    --ghax-bg-color: white;
+    --ghax-fg-color: black;
+    --ghax-font-family: Roboto, Arial, sans-serif;
+}
+
+body {
+    width: max(15vw, 15rem);
+    background-color: var(--ghax-bg-color);
+    font-family: var(--ghax-font-family);
+    color: var(--ghax-fg-color);
+    padding: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ghax-bg-color: #222;
+        --ghax-fg-color: white;
+    }
+}
