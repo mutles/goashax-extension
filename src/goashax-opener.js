@@ -1,5 +1,7 @@
-importScripts("browser-polyfill.min.js");
-importScripts("helper.js");
+if (typeof importScripts !== "undefined") {
+    importScripts("browser-polyfill.min.js");
+    importScripts("helper.js");
+}
 
 async function openTab(username) {
     let tab = await browser.tabs.create({ url: `https://www.twitch.tv/${username}`, active: false });

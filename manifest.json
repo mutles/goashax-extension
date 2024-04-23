@@ -4,7 +4,11 @@
   "name": "Goashax Opener",
   "version": "1.0.2",
   "background": {
-    "scripts": ["src/goashax-opener.js"],
+    "scripts": [
+      "src/browser-polyfill.min.js",
+      "src/helper.js",
+      "src/goashax-opener.js"
+    ],
     "service_worker": "src/goashax-opener.js"
   },
   "permissions": [
