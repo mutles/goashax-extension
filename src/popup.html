@@ -4,14 +4,16 @@
         <meta charset="utf-8">
         <link href="popup.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet"/>
+        <script src="browser-polyfill.min.js"></script>
+        <script src="helper.js"></script>
         <script defer="defer" src="popup.js"></script>
     </head>
     <body>
         <h2>Goashax Opener</h2>
 
         <div style="display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem;">
-            <label for="id_enable-ghax">Enable? </label>
-            <input id="id_enable-ghax" type="checkbox" name="enable-ghax">
+            <label for="id_enabled">Aktiviert? </label>
+            <input id="id_enabled" type="checkbox" name="enabled">
 
             <label for="id_interval">Interval [min] </label>
             <input id="id_interval" type="number" min="1" max="60" name="interval">

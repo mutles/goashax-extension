@@ -1,37 +1,17 @@
+importScripts("browser-polyfill.min.js");
+importScripts("helper.js");
 
-function openTab(username) {
-    browser.tabs.create({ url: `https://www.twitch.tv/${username}`, active: false }, (tab) => {
-        browser.tabs.update(tab.id, { highlighted: false, muted: true });
-    });
-}
-
-async function getStorage(name) {
-    return (await browser.storage.local.get(name))[name]
-}
-
-async function getIsActive() {
-    return await getStorage("ghax_enabled");
-}
-
-async function getInterval() {
-    let interval = await getStorage("interval");
-    return Math.max(interval ? interval : 5, 1);
-}
-
-async function getWasPreviouslyOnline() {
-    return await getStorage("previously_online") || false;
-}
-
-async function getUsername() {
-    return "goashaxtv";
+async function openTab(username) {
+    let tab = await browser.tabs.create({ url: `https://www.twitch.tv/${username}`, active: false });
+    await browser.tabs.update(tab.id, { highlighted: false, muted: true });
 }
 
 async function configChanged() {
-    browser.alarms.clearAll();
-    if (await getIsActive()) {
-        let interval = await getInterval();
-        browser.alarms.create(
-            "check_online",
+    await browser.alarms.clearAll();
+    if (await getStorage("enabled")) {
+        let interval = await getStorage("interval");
+        await browser.alarms.create(
+            "checkOnline",
             {
                 delayInMinutes: interval,
                 periodInMinutes: interval,
@@ -43,32 +23,32 @@ async function configChanged() {
 
 async function checkOnline() {
     console.log("Checking online status");
-    let username = await getUsername();
+    let username = "goashaxtv";
     let response = await fetch(`https://decapi.me/twitch/uptime/${username}`);
     let text = await response.text();
     let isOnline = !text.includes("offline");
-    let wasPreviouslyOnline = await getWasPreviouslyOnline();
+    let wasPreviouslyOnline = await getStorage("previouslyOnline");
     if (isOnline && !wasPreviouslyOnline) {
         console.log("Is now online. Opening in a new tab");
-        openTab(username);
+        await openTab(username);
     }
-    await browser.storage.local.set({previously_online: isOnline});
+    await setStorage("previouslyOnline", isOnline);
 }
 
 async function init() {
-    await browser.storage.local.set({previously_online: false});
-    configChanged();
+    await setStorage("previouslyOnline", false);
+    await configChanged();
 }
 
 browser.alarms.onAlarm.addListener((alarm) => {
-    if (alarm.name === "check_online") {
+    if (alarm.name === "checkOnline") {
         return checkOnline();
     }
     return false;
 });
 
 browser.runtime.onMessage.addListener(function(request, sender) {
-    if (request.type === "config_changed") {
+    if (request.type === "configChanged") {
         console.log("Config changed");
         return configChanged();
     }

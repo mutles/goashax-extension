@@ -2,9 +2,10 @@
   "description": "Opens Browser Tab for Goashax Twitch Channel",
   "manifest_version": 3,
   "name": "Goashax Opener",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "background": {
-    "scripts": ["src/goashax-opener.js"]
+    "scripts": ["src/goashax-opener.js"],
+    "service_worker": "src/goashax-opener.js"
   },
   "permissions": [
     "storage",
