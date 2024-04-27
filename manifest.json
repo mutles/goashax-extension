@@ -1,15 +1,15 @@
 {
-  "description": "Opens Browser Tab for Goashax Twitch Channel",
   "manifest_version": 3,
-  "name": "Goashax Opener",
-  "version": "1.0.2",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",  
+  "version": "1.0.3",
   "background": {
     "scripts": [
       "src/browser-polyfill.min.js",
       "src/helper.js",
-      "src/goashax-opener.js"
+      "src/background.js"
     ],
-    "service_worker": "src/goashax-opener.js"
+    "service_worker": "src/background.js"
   },
   "permissions": [
     "storage",
@@ -20,15 +20,17 @@
     "https://decapi.me/twitch/uptime/*"
   ],
   "action": {
-    "default_title": "Goashax Opener",
+    "default_title": "__MSG_extensionName__",
     "default_popup": "src/popup.html"
   },
   "icons": {
-    "64": "images/logo-64.png"
+    "64": "images/logo-64.png",
+    "128": "images/logo-128.png"
   },
   "browser_specific_settings": {
     "gecko": {
       "id": "{f389b523-ebfd-433e-a181-1d3c9dbc574a}"
     }
-  }
+  },
+  "default_locale": "de"
 }

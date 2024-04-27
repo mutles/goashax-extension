@@ -1,0 +1,18 @@
+{
+    "extensionName": {
+        "message": "GoasHax Extension",
+        "description": "Name of the extension."
+    },
+    "extensionDescription": {
+        "message": "GoasHax Extension",
+        "description": "Description of the extension."
+    },
+    "isEnabled": {
+        "message": "Aktiviert?",
+        "description": "Label for enable checkbox."
+    },
+    "intervalMins": {
+        "message": "Intervall (in Minuten)",
+        "description": "Label for interval input."
+    }
+}

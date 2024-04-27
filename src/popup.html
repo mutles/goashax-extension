@@ -3,19 +3,18 @@
     <head>
         <meta charset="utf-8">
         <link href="popup.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet"/>
         <script src="browser-polyfill.min.js"></script>
         <script src="helper.js"></script>
         <script defer="defer" src="popup.js"></script>
     </head>
     <body>
-        <h2>Goashax Opener</h2>
+        <h2>__MSG_extensionName__</h2>
 
-        <div style="display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem;">
-            <label for="id_enabled">Aktiviert? </label>
+        <div class="form-grid">
+            <label for="id_enabled">__MSG_isEnabled__ </label>
             <input id="id_enabled" type="checkbox" name="enabled">
 
-            <label for="id_interval">Interval [min] </label>
+            <label for="id_interval">__MSG_intervalMins__</label>
             <input id="id_interval" type="number" min="1" max="60" name="interval">
         </div>
     </body>

@@ -1,4 +1,6 @@
 (async function() {
+    localizeHTML();
+
     const DEFAULT_INTERVAL = 5;
 
     let enabledCheckbox = document.getElementById("id_enabled");
