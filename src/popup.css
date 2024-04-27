@@ -1,15 +1,21 @@
 :root {
     --ghax-bg-color: white;
     --ghax-fg-color: black;
-    --ghax-font-family: Roboto, Arial, sans-serif;
+    --ghax-font-family: Arial, sans-serif;
 }
 
 body {
-    width: max(15vw, 15rem);
+    width: 20rem;
     background-color: var(--ghax-bg-color);
     font-family: var(--ghax-font-family);
     color: var(--ghax-fg-color);
     padding: 1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem;
 }
 
 .hidden {
